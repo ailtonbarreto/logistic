@@ -149,14 +149,14 @@ percentual_frete = f"{percentual_frete:.2f}%"
 #-----------------------------------------------------------------------------------------------------
 
 with col1:
-    st.metric("Total Faturado",f'💰 R$ {total:,.0f}')
+    st.metric("Total Faturado",f"R$ {total:,.0f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
     
 with col2:
-    st.metric("QTD NFs",f'📃 {qtd_nfs:,.0f}')
+    st.metric("QTD NFs",f'📃 {qtd_nfs:,.0f}'.replace(',', 'X').replace('.', ',').replace('X', '.'))
     
     
 with col3:
-    st.metric("Frete Pago",f'💵 R$ {valor_frete:,.0f}')
+    st.metric("Frete Pago",f'💵 R$ {valor_frete:,.0f}'.replace(',', 'X').replace('.', ',').replace('X', '.'))
 
 with col4:
     st.metric("Percentual Frete",f'🚚 {percentual_frete}')
@@ -172,8 +172,10 @@ df_table = df_filtrado.groupby('TRANSPORTADORA').agg({'VALOR N.FISCAL': 'sum','F
 df_table = df_table.sort_values("FRETE PAGO",ascending = False)
 df_table['PERC. %'] = df_table.apply(lambda row: (row['FRETE PAGO'] / row['VALOR N.FISCAL']) * 100, axis=1)
 df_table['PERC. %'] = df_table['PERC. %'].apply(lambda x: f"{x :.1f}%")
-df_table['FRETE PAGO'] = df_table['FRETE PAGO'].apply(lambda x: f'R$ {x:,.2f}')
-df_table['VALOR N.FISCAL'] = df_table['VALOR N.FISCAL'].apply(lambda x: f'R$ {x:,.2f}')
+df_table['FRETE PAGO'] = df_table['FRETE PAGO'].apply(
+    lambda x: f"R$ {x:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
+df_table['VALOR N.FISCAL'] = df_table['VALOR N.FISCAL'].apply(
+    lambda x: f"R$ {x:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
 
 
 with col8:
@@ -222,7 +224,8 @@ df_uf = df_uf.sort_values('FATURAMENTO',ascending=True)
 # df_uf['FATURAMENTO'] = df_uf['FATURAMENTO'].apply(lambda x: f'R$ {x:,.2f}')
 
 uf_bar = px.bar(df_uf,x="FATURAMENTO",y="UF",orientation="h",color_discrete_sequence=["#0C74EB","#0C74EB"],
-                text= df_uf["FATURAMENTO"].apply(lambda x: f'R$ {x:,.2f}'))
+                text= df_uf["FATURAMENTO"].apply(
+    lambda x: f"R$ {x:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')))
 uf_bar.update_yaxes(showgrid=False)
 uf_bar.update_traces(showlegend=False)
 uf_bar.update_xaxes(showgrid=False,visible=False,title="")
@@ -239,14 +242,20 @@ df_uf_frete = df_filtrado.groupby('UF').agg({'VALOR N.FISCAL': 'sum','FRETE PAGO
 df_uf_frete['PERC. %'] = df_uf_frete.apply(lambda row: (row['FRETE PAGO'] / row['VALOR N.FISCAL']) * 100, axis=1)
 df_uf_frete['PERC. %'] = df_uf_frete['PERC. %'].apply(lambda x: f"{x :.1f}%")
 df_uf_frete = df_uf_frete.sort_values('VALOR N.FISCAL',ascending=False)
-df_uf_frete['FRETE PAGO'] = df_uf_frete['FRETE PAGO'].apply(lambda x: f'R$ {x:,.2f}')
-df_uf_frete['VALOR N.FISCAL'] = df_uf_frete['VALOR N.FISCAL'].apply(lambda x: f'R$ {x:,.2f}')
+df_uf_frete['FRETE PAGO'] = df_uf_frete['FRETE PAGO'].apply(
+    lambda x: f"R$ {x:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
+df_uf_frete['VALOR N.FISCAL'] = df_uf_frete['VALOR N.FISCAL'].apply(
+    lambda x: f"R$ {x:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
 
+                                                                    
 
+# f"R$ {valor:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
 
 #-----------------------------------------------------------------------------------------------------
-df_filtrado['FRETE PAGO'] = df_filtrado['FRETE PAGO'].apply(lambda x: f'R$ {x:,.2f}')
-df_filtrado['VALOR N.FISCAL'] = df_filtrado['VALOR N.FISCAL'].apply(lambda x: f'R$ {x:,.2f}')
+df_filtrado['FRETE PAGO'] = df_filtrado['FRETE PAGO'].apply(
+    lambda x: f"R$ {x:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
+df_filtrado['VALOR N.FISCAL'] = df_filtrado['VALOR N.FISCAL'].apply(
+    lambda x: f"R$ {x:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
 
 
 with col12:
