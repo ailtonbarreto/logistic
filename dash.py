@@ -53,7 +53,7 @@ df['VALOR N.FISCAL'] = df['VALOR N.FISCAL'].str.replace('.', '').str.replace(','
 
 
 df["UNIDADE"] = df['N. F.'].astype(str).str.slice(0, 1)
-df['UNIDADE'] = df['UNIDADE'].str.replace('1', 'Unidade 1').str.replace('2', 'Unidade 2')
+df['UNIDADE'] = df['UNIDADE'].str.replace('1', 'Unidade 1').str.replace('2', 'Unidade 2').str.replace('3', 'Unidade 3')
 
 
 #-----------------------------------------------------------------------------------------------------
