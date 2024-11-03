@@ -149,7 +149,7 @@ percentual_frete = f"{percentual_frete:.2f}%"
 #-----------------------------------------------------------------------------------------------------
 
 with col1:
-    st.metric("Total Faturado",f"R$ {total:,.0f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
+    st.metric("Total Faturado",f"💰 R$ {total:,.0f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
     
 with col2:
     st.metric("QTD NFs",f'📃 {qtd_nfs:,.0f}'.replace(',', 'X').replace('.', ',').replace('X', '.'))
