@@ -182,12 +182,15 @@ with col8:
     st.subheader("Por Transportadora", anchor = False)
     st.dataframe(df_table,use_container_width= True, hide_index = True)
 
-
+#-----------------------------------------------------------------------------------------------------
+#grafico de pizza
 
 df_pie = df_filtrado.groupby('UNIDADE')['FRETE PAGO'].sum().reset_index()    
 
-pie_chart = px.pie(df_pie,values = "FRETE PAGO", names ="UNIDADE",
+pie_chart = px.pie(df_pie,values = "FRETE PAGO", names ="UNIDADE",text= df_pie["FRETE PAGO"].apply(
+    lambda x: f"R$ {x:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')),
 category_orders = {'UNIDADE':["Unidade 1","Unidade 2","Unidade 3"]},color_discrete_sequence=["#0BABBD","#CEB17A"])
+
 pie_chart.update_traces(showlegend=True,textfont=dict(size=17,color='#ffffff'),textposition='outside')
 
 
