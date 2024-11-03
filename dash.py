@@ -269,7 +269,7 @@ with col10:
     st.plotly_chart(uf_bar,use_container_width=True)
 
 with col11:
-    st.subheader("Faturamento X Percentual Frete", anchor = False)
+    st.subheader("Faturamento Vs Percentual Frete", anchor = False)
     st.dataframe(df_uf_frete,use_container_width = True, hide_index = True)
     
 #-----------------------------------------------------------------------------------------------------
