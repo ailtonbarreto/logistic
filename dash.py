@@ -295,9 +295,10 @@ st.markdown(borda, unsafe_allow_html=True)
 
 botao = """
             <style>
-            [data-testid="StyledFullScreenButton"]
+            [data-testid="stFullScreenFrame"]
             {
-            visibility: hidden;
+            display: flex;
+            justify-content: center;
             }
             </style>
             """
