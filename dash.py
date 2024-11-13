@@ -303,4 +303,16 @@ botao = """
             </style>
             """
 
-st.markdown(botao, unsafe_allow_html=True)  
+st.markdown(botao, unsafe_allow_html=True)
+
+style = """
+            <style>
+            [data-testid="stElementToolbar"]
+            {
+            display: none;
+            }
+            </style>
+            """
+
+st.markdown(style, unsafe_allow_html=True)
+
