@@ -295,7 +295,7 @@ st.markdown(borda, unsafe_allow_html=True)
 
 botao = """
             <style>
-            [data-testid="stFullScreenFrame"]
+            [data-testid="StyledFullScreenButton"]
             {
             visibility: hidden;
             }
