@@ -279,7 +279,7 @@ borda = """
             <style>
             [data-testid="stColumn"]
             {
-            background-color: #000000;
+            background-color: #00000;
             border-radius: 15px;
             padding: 10px;
             text-align: center;
