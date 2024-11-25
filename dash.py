@@ -205,7 +205,7 @@ df_faturamento = df_filtrado.groupby('dia')['VALOR N.FISCAL'].sum().reset_index(
 
 column_chart_faturamento = px.area(df_faturamento,x="dia", y="VALOR N.FISCAL",color_discrete_sequence=[cor_barras])
 column_chart_faturamento.update_xaxes(dtick=1)
-column_chart_faturamento.update_layout(xaxis=dict(showgrid=False))
+column_chart_faturamento.update_layout(yaxis=dict(showgrid=False))
 column_chart_faturamento.layout.xaxis.fixedrange = True
 column_chart_faturamento.layout.yaxis.fixedrange = True
 column_chart_faturamento.update_xaxes(showgrid= False,visible = True ,title="")
