@@ -117,15 +117,15 @@ meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'
 with coltitle:
     filtro_fabrica = st.multiselect("Unidade",df['UNIDADE'].unique(),default=df['UNIDADE'].unique())
 with col5:
-    filtro_inicio = st.date_input("De",pd.to_datetime("2024-01-01").date(),format= "DD/MM/YYYY")
+    filtro_mes = st.selectbox("Mês",df['Mês'].unique())
 with col6:
-    filtro_fim = st.date_input("Até","today",format= "DD/MM/YYYY")
+    filtro_ano = st.selectbox("Ano",df['Ano'].unique())
 
 
 
 df_filtrado = df.groupby(['UNIDADE','N. F.','DATA N.F.','CIDADE','UF','TRANSPORTADORA','Ano','Mês',"dia"])['VALOR N.FISCAL'].sum().reset_index()
 
-df_filtrado = df_filtrado.query('@filtro_inicio <= `DATA N.F.` <= @filtro_fim and UNIDADE == @filtro_fabrica')
+df_filtrado = df_filtrado.query('Ano == @filtro_ano and Mês == @filtro_mes and UNIDADE == @filtro_fabrica')
 
 
 #---------------------------------------------------------------------------------------------
@@ -251,8 +251,6 @@ df_uf_frete['VALOR N.FISCAL'] = df_uf_frete['VALOR N.FISCAL'].apply(
     lambda x: f"R$ {x:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
 
                                                                     
-
-# f"R$ {valor:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
 
 #-----------------------------------------------------------------------------------------------------
 df_filtrado['FRETE PAGO'] = df_filtrado['FRETE PAGO'].apply(
