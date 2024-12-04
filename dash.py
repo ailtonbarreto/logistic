@@ -103,9 +103,9 @@ def aplicar_mes():
     elif mes == 8:    
         mes_atual = "Ago"
     elif mes == 9:    
-         mes_atual =  "Set"
+        mes_atual =  "Set"
     elif mes == 10:    
-         mes_atual =  "Out"
+        mes_atual =  "Out"
     elif mes == 11:    
         mes_atual = "Nov"
     else:
