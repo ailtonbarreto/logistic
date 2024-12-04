@@ -84,30 +84,35 @@ today = dt.date.today()
 
 mes = today.month
 
-if mes == 1:
-    mes_atual = "Jan"
-elif mes == 2:
-    mes_atual = "Fev"
-elif mes == 3:
-    mes_atual = "Mar"
-elif mes == 4:
-    mes_atual = "Abr"
-elif mes == 5:
-    mes_atual = "Mai"
-elif mes == 6:
-    mes_atual = "Jun"
-elif mes ==7:    
-    mes_atual = "Jul"
-elif mes == 8:    
-    mes_atual = "Ago"
-elif mes == 9:    
-   mes_atual =  "Set"
-elif mes == 10:    
-   mes_atual =  "Out"
-elif mes == 11:    
-    mes_atual = "Nov"
-else:
-    "Dez"
+def aplicar_mes():
+    
+    if mes == 1:
+        mes_atual = "Jan"
+    elif mes == 2:
+        mes_atual = "Fev"
+    elif mes == 3:
+        mes_atual = "Mar"
+    elif mes == 4:
+        mes_atual = "Abr"
+    elif mes == 5:
+        mes_atual = "Mai"
+    elif mes == 6:
+        mes_atual = "Jun"
+    elif mes ==7:    
+        mes_atual = "Jul"
+    elif mes == 8:    
+        mes_atual = "Ago"
+    elif mes == 9:    
+         mes_atual =  "Set"
+    elif mes == 10:    
+         mes_atual =  "Out"
+    elif mes == 11:    
+        mes_atual = "Nov"
+    else:
+        "Dez"
+    return mes_atual
+
+mes_atual = aplicar_mes()
 
 meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
 
