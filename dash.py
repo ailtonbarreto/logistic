@@ -109,7 +109,7 @@ def aplicar_mes():
     elif mes == 11:    
         mes_atual = "Nov"
     else:
-        "Dez"
+        mes_atual = "Dez"
     return mes_atual
 
 mes_atual = aplicar_mes()
