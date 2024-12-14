@@ -6,7 +6,7 @@ import plotly.express as px
 #-----------------------------------------------------------------------------------------------------
 #page config
 
-st.set_page_config(layout = "wide",page_title="Acompanhmento Logístico",page_icon="🚚")
+st.set_page_config(layout = "wide",page_title="Acompanhmento Logístico",page_icon="📊")
 
 with open("style.css") as f:
     st.markdown(f"<style>{f.read()}</style>",unsafe_allow_html = True)
