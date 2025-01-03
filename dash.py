@@ -15,8 +15,8 @@ st.image("header.png")
 st.divider()
 
 
-coltitle, = st.columns(1)
-col1, col2, col3, col4, col5, col6 = st.columns([1.8,1.8,1.8,1.5,1,1])
+coltitle, colfilter1, colfilter2 = st.columns([4,1,1])
+col1, col2, col3, col4 = st.columns([1,1,1,1])
 col7, col8 = st.columns(2)
 col10, col11 = st.columns(2)
 col9, = st.columns(1)
@@ -121,9 +121,9 @@ meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'
 
 with coltitle:
     filtro_fabrica = st.multiselect("Unidade",df['UNIDADE'].unique(),default=df['UNIDADE'].unique())
-with col6:
+with colfilter1:
     filtro_mes = st.selectbox("Mês",df['Mês'].unique(),index=meses.index(mes_atual))
-with col5:
+with colfilter2:
     filtro_ano = st.selectbox("Ano",df['Ano'].unique())
 
 
