@@ -124,6 +124,7 @@ with coltitle:
 with colfilter2:
     filtro_mes = st.selectbox("Mês",df['Mês'].unique(),index=meses.index(mes_atual))
 with colfilter1:
+    df = df.sort_values("Ano",ascending=False)
     filtro_ano = st.selectbox("Ano",df['Ano'].unique())
 
 
