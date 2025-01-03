@@ -277,7 +277,8 @@ with col11:
     st.dataframe(df_uf_frete,use_container_width = True, hide_index = True)
     
 if st.button("Atualizar"):
-    st.cache_data.clear()    
+    st.cache_data.clear()
+    st.rerun()
 #-----------------------------------------------------------------------------------------------------
 #estilizacao
 
