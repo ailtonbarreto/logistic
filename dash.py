@@ -121,9 +121,9 @@ meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'
 
 with coltitle:
     filtro_fabrica = st.multiselect("Unidade",df['UNIDADE'].unique(),default=df['UNIDADE'].unique())
-with colfilter1:
-    filtro_mes = st.selectbox("Mês",df['Mês'].unique(),index=meses.index(mes_atual))
 with colfilter2:
+    filtro_mes = st.selectbox("Mês",df['Mês'].unique(),index=meses.index(mes_atual))
+with colfilter1:
     filtro_ano = st.selectbox("Ano",df['Ano'].unique())
 
 
