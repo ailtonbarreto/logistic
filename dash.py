@@ -27,7 +27,7 @@ col12, = st.columns(1)
 
 link = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8dmm1k9rZiTsCBoxosvAfNRGC5_GKd_0DdhKQDastA0LX2oJtxN_TQDS3g268zxWI-W5aTeDcyUP8/pub?gid=0&single=true&output=csv"
 
-@st.cache_data
+# @st.cache_data
 def load_data(link):
     dados = pd.read_csv(link)
     return dados
@@ -276,9 +276,9 @@ with col11:
     st.subheader("Faturamento Vs Percentual Frete", anchor = False)
     st.dataframe(df_uf_frete,use_container_width = True, hide_index = True)
     
-if st.button("Atualizar"):
-    st.cache_data.clear()
-    st.rerun()
+# if st.button("Atualizar"):
+#     st.cache_data.clear()
+#     st.rerun()
 #-----------------------------------------------------------------------------------------------------
 #estilizacao
 
