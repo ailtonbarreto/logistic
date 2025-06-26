@@ -323,3 +323,15 @@ style = """
 
 st.markdown(style, unsafe_allow_html=True)
 
+style1 = """
+            <style>
+            [data-testid="stAppIframeResizerAnchor"]
+            {
+            display: none;
+            }
+            </style>
+            """
+
+st.markdown(style1, unsafe_allow_html=True)
+
+
