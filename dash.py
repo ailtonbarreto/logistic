@@ -336,7 +336,7 @@ st.markdown(style1, unsafe_allow_html=True)
 
 hide_st_style = """
             <style>
-            #MainMenu {visibility: hidden;}
+            header {visibility: hidden;}
             footer {visibility: hidden;}
             </style>
             """
