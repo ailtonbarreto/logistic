@@ -229,7 +229,6 @@ df_uf['FATURAMENTO'] = df_uf['VALOR N.FISCAL']
 df_uf = df_uf.drop(columns="VALOR N.FISCAL")
 df_uf = df_uf.sort_values('FATURAMENTO',ascending=True)
 
-# df_uf['FATURAMENTO'] = df_uf['FATURAMENTO'].apply(lambda x: f'R$ {x:,.2f}')
 
 uf_bar = px.bar(df_uf,x="FATURAMENTO",y="UF",orientation="h",color_discrete_sequence=["#0C74EB","#0C74EB"],
                 text= df_uf["FATURAMENTO"].apply(
