@@ -237,7 +237,7 @@ uf_bar = px.bar(df_uf,x="FATURAMENTO",y="UF",orientation="h",color_discrete_sequ
 uf_bar.update_yaxes(showgrid=False)
 uf_bar.update_traces(showlegend=False)
 uf_bar.update_xaxes(showgrid=False,visible=False,title="")
-uf_bar.update_traces(textfont=dict(size=15,color='#ffffff'),textposition="outside")
+uf_bar.update_traces(textfont=dict(size=15,color='#ffffff'),textposition="auto")
 uf_bar.layout.xaxis.fixedrange = True
 uf_bar.layout.yaxis.fixedrange = True
 
