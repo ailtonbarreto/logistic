@@ -303,15 +303,26 @@ with col12:
 with col10:
     st.subheader("Faturamento por Estado", anchor=False)
 
-    m = folium.Map(location=[-14.235, -51.925], zoom_start=4)
+    m = folium.Map(
+    location=[-14.235, -51.925],
+    zoom_start=4,
+    control_scale=False,
+    zoom_control=False,
+    scrollWheelZoom=False,
+    dragging=True,
+)
+
     
     def cor_faturamento(valor):
         if valor < df_uf["FATURAMENTO"].quantile(0.33):
-            return "#2ECC71"
+            return "#E74C3C"
+        
         elif valor < df_uf["FATURAMENTO"].quantile(0.66):
             return "#F1C40F"
         else:
-            return "#E74C3C"
+            return "#2ECC71"
+
+        
 
     for _, row in df_uf.iterrows():
         uf = row["UF"]
@@ -322,7 +333,7 @@ with col10:
 
             folium.CircleMarker(
                 location=[lat, lon],
-                radius=max(5, valor / df_uf["FATURAMENTO"].max() * 30),
+                radius=max(5, valor / df_uf["FATURAMENTO"].max() * 40),
                 color=cor_faturamento(valor),
                 fill=True,
                 fill_color=cor_faturamento(valor),
@@ -331,7 +342,7 @@ with col10:
                 tooltip=f"{uf}: R$ {valor:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
             ).add_to(m)
             
-    st_folium(m, width=900)
+    st_folium(m, width=900, height=500, returned_objects=[])
 
 
 
@@ -349,11 +360,12 @@ borda = """
             <style>
             [data-testid="stColumn"]
             {
-            background-color: #000000;
+            background-color: #fff;
             border-radius: 15px;
+            box-shadow:  0.2rem 0.2rem 1rem #363949;
             padding: 10px;
             text-align: center;
-            color: #ffffff;
+            color: #000;
             opacity: 100%;
             }
             </style>
