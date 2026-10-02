@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import datetime as dt
 import plotly.express as px
+import folium
+from streamlit_folium import st_folium
+
 
 #-----------------------------------------------------------------------------------------------------
 #page config
@@ -230,16 +233,46 @@ df_uf = df_uf.drop(columns="VALOR N.FISCAL")
 df_uf = df_uf.sort_values('FATURAMENTO',ascending=True)
 
 
-uf_bar = px.bar(df_uf,x="FATURAMENTO",y="UF",orientation="h",color_discrete_sequence=["#0C74EB","#0C74EB"],
-                text= df_uf["FATURAMENTO"].apply(
-    lambda x: f"R$ {x:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')))
-uf_bar.update_yaxes(showgrid=False)
-uf_bar.update_traces(showlegend=False)
-uf_bar.update_xaxes(showgrid=False,visible=False,title="")
-uf_bar.update_traces(textfont=dict(size=20,color='#ffffff'),textposition="auto")
-uf_bar.layout.xaxis.fixedrange = True
-uf_bar.layout.yaxis.fixedrange = True
+# uf_bar = px.bar(df_uf,x="FATURAMENTO",y="UF",orientation="h",color_discrete_sequence=["#0C74EB","#0C74EB"],
+#                 text= df_uf["FATURAMENTO"].apply(
+#     lambda x: f"R$ {x:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')))
+# uf_bar.update_yaxes(showgrid=False)
+# uf_bar.update_traces(showlegend=False)
+# uf_bar.update_xaxes(showgrid=False,visible=False,title="")
+# uf_bar.update_traces(textfont=dict(size=20,color='#ffffff'),textposition="auto")
+# uf_bar.layout.xaxis.fixedrange = True
+# uf_bar.layout.yaxis.fixedrange = True
 
+
+coords = {
+    "AC": (-8.77, -70.55),
+    "AL": (-9.62, -36.06),
+    "AP": (1.41, -51.77),
+    "AM": (-3.47, -65.10),
+    "BA": (-12.96, -41.39),
+    "CE": (-5.20, -39.53),
+    "DF": (-15.83, -47.86),
+    "ES": (-19.19, -40.34),
+    "GO": (-15.98, -49.86),
+    "MA": (-4.96, -45.27),
+    "MT": (-12.64, -55.42),
+    "MS": (-20.51, -54.54),
+    "MG": (-18.10, -44.38),
+    "PA": (-3.79, -52.48),
+    "PB": (-7.28, -36.72),
+    "PR": (-24.89, -51.55),
+    "PE": (-8.38, -37.86),
+    "PI": (-7.06, -42.28),
+    "RJ": (-22.84, -43.15),
+    "RN": (-5.81, -36.59),
+    "RS": (-30.01, -51.22),
+    "RO": (-10.83, -63.34),
+    "RR": (1.99, -61.33),
+    "SC": (-27.33, -50.45),
+    "SP": (-23.55, -46.64),
+    "SE": (-10.57, -37.45),
+    "TO": (-10.25, -48.25),
+}
 
 
 
@@ -268,8 +301,39 @@ with col12:
     st.dataframe(df_filtrado,use_container_width = True, hide_index = True)
 
 with col10:
-    st.subheader("Faturamento Por Estado", anchor = False)
-    st.plotly_chart(uf_bar,use_container_width=True)
+    st.subheader("Faturamento por Estado", anchor=False)
+
+    m = folium.Map(location=[-14.235, -51.925], zoom_start=4)
+    
+    def cor_faturamento(valor):
+        if valor < df_uf["FATURAMENTO"].quantile(0.33):
+            return "#2ECC71"
+        elif valor < df_uf["FATURAMENTO"].quantile(0.66):
+            return "#F1C40F"
+        else:
+            return "#E74C3C"
+
+    for _, row in df_uf.iterrows():
+        uf = row["UF"]
+        valor = row["FATURAMENTO"]
+
+        if uf in coords:
+            lat, lon = coords[uf]
+
+            folium.CircleMarker(
+                location=[lat, lon],
+                radius=max(5, valor / df_uf["FATURAMENTO"].max() * 30),
+                color=cor_faturamento(valor),
+                fill=True,
+                fill_color=cor_faturamento(valor),
+                fill_opacity=0.7,
+                popup=f"<b>{uf}</b><br>Faturamento: R$ {valor:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'),
+                tooltip=f"{uf}: R$ {valor:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
+            ).add_to(m)
+            
+    st_folium(m, width=900)
+
+
 
 with col11:
     st.subheader("Faturamento Vs Percentual Frete", anchor = False)
