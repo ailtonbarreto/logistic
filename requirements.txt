@@ -4,3 +4,4 @@ plotly.express
 gspread
 datetime
 folium
+streamlit_folium
