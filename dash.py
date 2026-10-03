@@ -307,7 +307,7 @@ with col10:
     location=[-14.235, -51.925],
     zoom_start=4,
     control_scale=False,
-    zoom_control=False,
+    zoom_control=True,
     scrollWheelZoom=False,
     dragging=True,
 )
@@ -338,7 +338,7 @@ with col10:
                 fill=True,
                 fill_color=cor_faturamento(valor),
                 fill_opacity=0.7,
-                popup=f"<b>{uf}</b><br>Faturamento: R$ {valor:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'),
+                # popup=f"{valor:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'),
                 tooltip=f"{uf}: R$ {valor:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
             ).add_to(m)
             
