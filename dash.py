@@ -189,7 +189,7 @@ df_table['VALOR N.FISCAL'] = df_table['VALOR N.FISCAL'].apply(
 
 with col8:
     st.subheader("Por Transportadora", anchor = False)
-    st.dataframe(df_table,width="stretch", hide_index = True)
+    st.dataframe(df_table,use_container_width=True, hide_index = True)
 
 #-----------------------------------------------------------------------------------------------------
 #grafico de pizza
@@ -203,7 +203,7 @@ pie_chart.update_traces(showlegend=True,textfont=dict(size=17,color='#ffffff'),t
 
 with col7:
     st.subheader("Frete Por Unidade",anchor=False)
-    st.plotly_chart(pie_chart,width="stretch")
+    st.plotly_chart(pie_chart,use_container_width=True)
 
 
 #-----------------------------------------------------------------------------------------------------
@@ -220,7 +220,7 @@ column_chart_faturamento.update_xaxes(showgrid= False,visible = True ,title="")
 
 with col9:
     st.subheader("Faturamento Diário", anchor = False)
-    st.plotly_chart(column_chart_faturamento,width="stretch")
+    st.plotly_chart(column_chart_faturamento,use_container_width=True)
 #-----------------------------------------------------------------------------------------------------
 
 df_filtrado = df_filtrado.drop(columns=["Mês","dia","Ano"])
@@ -298,7 +298,7 @@ df_filtrado['VALOR N.FISCAL'] = df_filtrado['VALOR N.FISCAL'].apply(
 
 with col12:
     st.subheader("Detalhamento Geral", anchor = False)
-    st.dataframe(df_filtrado,width="stretch", hide_index = True)
+    st.dataframe(df_filtrado,use_container_width=True, hide_index = True)
 
 with col10:
     st.subheader("Faturamento por Estado", anchor=False)
@@ -348,7 +348,7 @@ with col10:
 
 with col11:
     st.subheader("Faturamento Vs Percentual Frete", anchor = False)
-    st.dataframe(df_uf_frete,width="stretch", hide_index = True)
+    st.dataframe(df_uf_frete,use_container_width=True, hide_index = True)
     
 if st.button("Atualizar"):
     st.cache_data.clear()
