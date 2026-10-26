@@ -205,7 +205,6 @@ with col7:
     st.subheader("Frete Por Unidade",anchor=False)
     st.plotly_chart(pie_chart,width="stretch")
 
-
 #-----------------------------------------------------------------------------------------------------
 
 df_faturamento = df_filtrado.groupby('dia')['VALOR N.FISCAL'].sum().reset_index()
@@ -356,22 +355,22 @@ if st.button("Atualizar"):
 #-----------------------------------------------------------------------------------------------------
 #estilizacao
 
-borda = """
-            <style>
-            [data-testid="stColumn"]
-            {
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow:  0.2rem 0.2rem 1rem #363949;
-            padding: 10px;
-            text-align: center;
-            color: #000;
-            opacity: 100%;
-            }
-            </style>
-            """
+# borda = """
+#             <style>
+#             [data-testid="stColumn"]
+#             {
+#             background-color: #fff;
+#             border-radius: 15px;
+#             box-shadow:  0.2rem 0.2rem 1rem #363949;
+#             padding: 10px;
+#             text-align: center;
+#             color: #000;
+#             opacity: 100%;
+#             }
+#             </style>
+#             """
 
-st.markdown(borda, unsafe_allow_html=True)  
+# st.markdown(borda, unsafe_allow_html=True)  
 
 
 
